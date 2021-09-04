@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+        <class name="pp.Movies" table="movtab">
+        	<id name="mid" column="mid">
+        		<generator class="assigned"></generator>
+        	</id>
+        	<property name="mname" column="mname" type="string" length="20"></property>
+            <many-to-one name="ac" class="pp.Actor">
+                 <column name="aid"></column>
+            </many-to-one>
+        </class>
+        
+         <class name="pp.Actor" table="acttab">
+        	<id name="aid" column="aid">
+        		<generator class="assigned"></generator>
+        	</id>
+        	<property name="aname" column="aname" type="string" length="20"></property>
+        
+        </class>
+
+</hibernate-mapping>

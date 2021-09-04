@@ -1,0 +1,28 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+       <class name="pp.Album" table="albtab">
+       		<id name="aid" column="aid">
+       			<generator class="assigned"></generator>
+       		</id>
+       		<property name="aname" column="aname" type="string" length="10"></property>
+       		
+       		<list name="photoes" table="photo">
+       		     <key column="p_id"/>
+       		     <list-index column="idx"></list-index>
+       		     <one-to-many class="pp.Photo"/>
+       		</list>
+       </class>
+
+       <class name="pp.Photo" table="photab">
+       		<id name="pid" column="pid">
+       			<generator class="assigned"></generator>
+       		</id>
+       		<property name="pname" column="pname" type="string" length="10"></property>
+       </class>
+
+
+
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+       <class name="pp.Employee" table="emptab">
+       		<id name="empId" column="eId">
+       			<generator class="assigned"></generator>
+       		</id>
+       		<property name="empName" column="eName" type="string" length="20"></property>
+            <one-to-one name="addr" class="pp.Address"></one-to-one>
+       </class>
+       
+       <class name="pp.Address" table="addtab">
+       		<id name="lineNo" column="lineNo">
+       			<generator class="assigned"></generator>
+       		</id>
+            <property name="city" column="city" type="string" length="20"></property>      
+        </class>
+
+</hibernate-mapping>

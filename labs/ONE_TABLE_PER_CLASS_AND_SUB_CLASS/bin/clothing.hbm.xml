@@ -1,0 +1,22 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+          <class name="pp.Clothing" table="clothingdb">
+              <id name="id" column="cid" type="integer" length="10">
+                  <generator class="assigned"></generator>
+              </id>
+              <discriminator column="ctype" type="string" length="10"></discriminator>
+              <property name="color" column="ccolor" type="string" length="10"></property>
+              <property name="size" column="csize" type="integer" length="10"></property>
+          </class>
+          
+          <subclass name="pp.Shirt" discriminator-value="SH" extends="pp.Clothing">
+               <property name="fit" column="cfit" type="integer" length="10"></property>
+          </subclass>
+          
+          <subclass name="pp.Trouser" discriminator-value="TR" extends="pp.Clothing">
+               <property name="gender" column="cgender" type="string" length="10"></property>
+          </subclass>
+
+</hibernate-mapping>
